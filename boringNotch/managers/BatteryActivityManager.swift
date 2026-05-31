@@ -19,33 +19,7 @@ class BatteryActivityManager {
     private var batterySource: CFRunLoopSource?
     private var observers: [(BatteryEvent) -> Void] = []
     private var previousBatteryInfo: BatteryInfo?
-    // actor-based queue to serialize notification delivery
-    private let notificationQueueActor = NotificationQueue()
-
-    /// An actor responsible for serializing and delivering events with a 1‑second delay.
-    private actor NotificationQueue {
-        private var queue: [BatteryEvent] = []
-        private var processing = false
-
-        /// Enqueue an event; the `deliver` closure is always invoked on the main actor.
-        func enqueue(_ event: BatteryEvent, deliver: @MainActor @escaping (BatteryEvent) -> Void) {
-            queue.append(event)
-            if !processing {
-                processing = true
-                Task { await process(deliver: deliver) }
-            }
-        }
-
-        private func process(deliver: @MainActor @escaping (BatteryEvent) -> Void) async {
-            while !queue.isEmpty {
-                let event = queue.removeFirst()
-                // pause between notifications
-                try? await Task.sleep(nanoseconds: 1_000_000_000)
-                await deliver(event)
-            }
-            processing = false
-        }
-    }
+    private let notificationQueueActor = NotificationQueue<BatteryEvent>()
 
     enum BatteryEvent {
         case powerSourceChanged(isPluggedIn: Bool)
