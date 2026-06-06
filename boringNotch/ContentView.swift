@@ -331,18 +331,21 @@ struct ContentView: View {
                     {
                         HStack(spacing: 0) {
                             HStack {
-                                Text(bluetoothModel.statusText)
-                                    .font(.headline)
-                                    .foregroundStyle(.white)
+                                MarqueeText(
+                                    bluetoothModel.statusText, 
+                                    font: .subheadline, 
+                                    color: .white, 
+                                    delayDuration: 0.04,
+                                    frameWidth: vm.closedNotchSize.width
+                                )
                             }
-                            .frame(maxWidth: vm.closedNotchSize.width + 10, alignment: .leading)
-
-                            Rectangle()
-                                .fill(.black)
-                                .frame(width: vm.closedNotchSize.width)
+                            .frame(width: vm.closedNotchSize.width + 10, alignment: .leading)
 
                             HStack {
-                                BoringBluetoothView(eventType: bluetoothModel.lastEventType)
+                                BoringBluetoothView(
+                                    icon: bluetoothModel.lastIcon,
+                                    eventType: bluetoothModel.lastEventType
+                                )
                             }
                             .frame(width: 76, alignment: .trailing)
                         }

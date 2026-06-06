@@ -10,6 +10,7 @@
 		0BC7F5E32FD369990092DD55 /* BluetoothSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC7F5E22FD369990092DD55 /* BluetoothSettingsView.swift */; };
 		0BC7F5E52FD36CA70092DD55 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7F5E42FD36CA70092DD55 /* IOBluetooth.framework */; };
 		0BE5072F2FCC1D840064CC3C /* NotificationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5072E2FCC1D840064CC3C /* NotificationQueue.swift */; };
+		0BE945E62FD41DFF00411721 /* BluetoothIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE945E52FD41DFF00411721 /* BluetoothIconHelper.swift */; };
 		1100290C2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100290B2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift */; };
 		110029272E84FD4C00035A57 /* TemporaryFileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110029262E84FD4C00035A57 /* TemporaryFileStorageService.swift */; };
 		1100292A2E8691B400035A57 /* FileShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110029292E8691B400035A57 /* FileShareView.swift */; };
@@ -205,6 +206,7 @@
 		0BC7F5E22FD369990092DD55 /* BluetoothSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSettingsView.swift; sourceTree = "<group>"; };
 		0BC7F5E42FD36CA70092DD55 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
 		0BE5072E2FCC1D840064CC3C /* NotificationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQueue.swift; sourceTree = "<group>"; };
+		0BE945E52FD41DFF00411721 /* BluetoothIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothIconHelper.swift; sourceTree = "<group>"; };
 		1100290B2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSItemProvider+LoadHelpers.swift"; sourceTree = "<group>"; };
 		110029262E84FD4C00035A57 /* TemporaryFileStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryFileStorageService.swift; sourceTree = "<group>"; };
 		110029292E8691B400035A57 /* FileShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileShareView.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				14288E0B2C6F8EC000B9F80C /* AppIcons.swift */,
 				AFAD1670A870402D88BFFE47 /* AudioOutputRouteResolver.swift */,
 				0BE5072E2FCC1D840064CC3C /* NotificationQueue.swift */,
+				0BE945E52FD41DFF00411721 /* BluetoothIconHelper.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1140,6 +1143,7 @@
 				149E0B972C737D00006418B1 /* WebcamManager.swift in Sources */,
 				14288E0C2C6F8EC000B9F80C /* AppIcons.swift in Sources */,
 				B1C448982C972CC4001F0858 /* ListItemPopover.swift in Sources */,
+				0BE945E62FD41DFF00411721 /* BluetoothIconHelper.swift in Sources */,
 				B19016242CC15B5000E3F12E /* Constants.swift in Sources */,
 				1100290C2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift in Sources */,
 				11CFC6632E09918400748C80 /* MusicControllerSelectionView.swift in Sources */,

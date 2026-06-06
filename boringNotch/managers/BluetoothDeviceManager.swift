@@ -8,23 +8,22 @@
 import Foundation
 import IOBluetooth
 
-
 /// Monitors Bluetooth activities on the device
-/// - Note: This class uses the IOBluetooth framework to monitor battery status
+/// - Note: This class uses the IOBluetooth framework to monitor Bluetooth status
 class BluetoothDeviceManager {
 
     static let shared = BluetoothDeviceManager()
 
+    enum BluetoothEvent {
+        case deviceConnected(name: String, address: String, icon: String)
+        case deviceDisconnected(name: String, address: String, icon: String)
+    }
+
     private var connectNotification: IOBluetoothUserNotification?
     private var disconnectNotifications: [String: IOBluetoothUserNotification] = [:]
-    
+
     private var observers: [(BluetoothEvent) -> Void] = []
     private let notificationQueueActor = NotificationQueue<BluetoothEvent>()
-
-    enum BluetoothEvent {
-        case deviceConnected(name: String, address: String)
-        case deviceDisconnected(name: String, address: String)
-    }
 
     private init() {
         startMonitoring()
@@ -44,7 +43,7 @@ class BluetoothDeviceManager {
         }
     }
 
-    /// Registers a Bluetooth diconnection
+    /// Registers a Bluetooth disconnection
     private func registerDisconnect(for device: IOBluetoothDevice) {
         guard let address = device.addressString else { return }
         guard disconnectNotifications[address] == nil else { return }
@@ -61,14 +60,16 @@ class BluetoothDeviceManager {
         registerDisconnect(for: device)
         let name = device.name ?? device.addressString ?? "Unknown Device"
         let address = device.addressString ?? ""
-        enqueueNotification(.deviceConnected(name: name, address: address))
+        let icon = BluetoothIconHelper.SFSymbolName(for: device.classOfDevice, for: name)
+        enqueueNotification(.deviceConnected(name: name, address: address, icon: icon))
     }
 
     @objc private func deviceDisconnected(_ notification: IOBluetoothUserNotification, device: IOBluetoothDevice) {
         let address = device.addressString ?? ""
         disconnectNotifications.removeValue(forKey: address)
         let name = device.name ?? device.addressString ?? "Unknown Device"
-        enqueueNotification(.deviceDisconnected(name: name, address: address))
+        let icon = BluetoothIconHelper.SFSymbolName(for: device.classOfDevice, for: name)
+        enqueueNotification(.deviceDisconnected(name: name, address: address, icon: icon))
     }
 
     /// Enqueues a notification to be processed using the concurrency-based queue actor.
@@ -89,9 +90,7 @@ class BluetoothDeviceManager {
         }
     }
 
-    
-    /// Adds an observer to listen to battery changes
-    /// - Parameter observer: The observer closure to be called on battery events
+    /// Adds an observer to listen to Bluetooth events
     /// - Returns: The ID of the observer for later removal
     func addObserver(_ observer: @escaping (BluetoothEvent) -> Void) -> Int {
         observers.append(observer)
@@ -99,7 +98,6 @@ class BluetoothDeviceManager {
     }
 
     /// Removes an observer by its ID
-    /// - Parameter id: The ID of the observer to be removed
     func removeObserver(byId id: Int) {
         guard id >= 0 && id < observers.count else { return }
         observers.remove(at: id)

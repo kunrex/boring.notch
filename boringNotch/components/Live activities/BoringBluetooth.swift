@@ -8,33 +8,12 @@
 import SwiftUI
 
 struct BoringBluetoothView: View {
+    let icon: String
     let eventType: BluetoothStatusViewModel.EventType
 
-    var iconStatus: String {
-        if eventType == .connected {
-            return "antenna.radiowaves.left.and.right"
-        }
-        else {
-            return "antenna.radiowaves.left.and.right.slash"
-        }
-    }
-
-    var iconColor: Color {
-        if eventType == .connected {
-            return .blue
-        }
-        else {
-            return .secondary
-        }
-    }
-
     var body: some View {
-        VStack(spacing: 3) {
-            Image(systemName: iconStatus)
-                .font(.system(
-                    size: 14, 
-                    weight: .bold))
-                .foregroundStyle(iconColor)
-        }
+        Image(systemName: icon)
+            .font(.system(size: 14, weight: .bold))
+            .foregroundStyle(eventType == .connected ? Color.blue : Color.secondary)
     }
 }
