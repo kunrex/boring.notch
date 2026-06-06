@@ -330,24 +330,24 @@ struct ContentView: View {
                         && vm.notchState == .closed && Defaults[.showBluetoothLiveActivities]
                     {
                         HStack(spacing: 0) {
-                            HStack {
-                                MarqueeText(
-                                    bluetoothModel.statusText, 
-                                    font: .subheadline, 
-                                    color: .white, 
-                                    delayDuration: 0.04,
-                                    frameWidth: vm.closedNotchSize.width
-                                )
-                            }
-                            .frame(width: vm.closedNotchSize.width + 10, alignment: .leading)
+                            MarqueeText(
+                                bluetoothModel.statusText,
+                                font: .subheadline,
+                                color: .white,
+                                delayDuration: 1.0,
+                                frameWidth: vm.closedNotchSize.width
+                            )
+                            .frame(width: vm.closedNotchSize.width, alignment: .leading)
 
-                            HStack {
-                                BoringBluetoothView(
-                                    icon: bluetoothModel.lastIcon,
-                                    eventType: bluetoothModel.lastEventType
-                                )
-                            }
-                            .frame(width: 76, alignment: .trailing)
+                            Rectangle()
+                                .fill(.black)
+                                .frame(width: vm.closedNotchSize.width + 10)
+
+                            BoringBluetoothView(
+                                icon: bluetoothModel.lastIcon,
+                                eventType: bluetoothModel.lastEventType
+                            )
+                            .frame(width: 76, alignment: .center)
                         }
                         .frame(height: displayClosedNotchHeight, alignment: .center)
                       } else if coordinator.shouldShowSneakPeek(on: vm.screenUUID) && Defaults[.inlineOSD] && (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .bluetooth) && vm.notchState == .closed {
