@@ -2016,6 +2016,9 @@
         }
       }
     },
+    "Bluetooth" : {
+
+    },
     "Boring Notch" : {
       "localizations" : {
         "en" : {
@@ -11443,6 +11446,9 @@
           }
         }
       }
+    },
+    "Show Bluetooth live activities" : {
+
     },
     "Show calendar" : {
       "localizations" : {
