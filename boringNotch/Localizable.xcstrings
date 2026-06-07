@@ -5179,6 +5179,9 @@
         }
       }
     },
+    "Enable System Usage" : {
+
+    },
     "Enable window shadow" : {
       "localizations" : {
         "de" : {
@@ -6609,6 +6612,9 @@
           }
         }
       }
+    },
+    "How often system stats are refreshed. Lower values are more responsive but take up more resources." : {
+
     },
     "https://github.com/pear-devs/pear-desktop" : {
       "localizations" : {
@@ -8209,6 +8215,9 @@
           }
         }
       }
+    },
+    "Monitoring" : {
+
     },
     "Music Source" : {
       "localizations" : {
@@ -10724,6 +10733,9 @@
         }
       }
     },
+    "Sample Rate" : {
+
+    },
     "Scale corner radius for closed notch" : {
       "localizations" : {
         "en" : {
@@ -12842,6 +12854,12 @@
           }
         }
       }
+    },
+    "System Usage" : {
+
+    },
+    "System Usage Disabled" : {
+
     },
     "Time to Full Charge: %@" : {
       "localizations" : {

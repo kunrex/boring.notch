@@ -328,6 +328,10 @@ extension Defaults.Keys {
     // MARK: Media Controller
     static let mediaController = Key<MediaControllerType>("mediaController", default: defaultMediaController)
     
+    // MARK: System Usage
+    static let enableSystemUsage = Key<Bool>("enableSystemUsage", default: true)
+    static let systemUsageUpdateInterval = Key<Double>("systemUsageUpdateInterval", default: 2.0)
+
     // MARK: Advanced Settings
     static let useCustomAccentColor = Key<Bool>("useCustomAccentColor", default: false)
     static let customAccentColorData = Key<Data?>("customAccentColorData", default: nil)

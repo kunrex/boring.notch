@@ -431,6 +431,8 @@ struct ContentView: View {
                         )
                     case .shelf:
                         ShelfView()
+                    case .systemUsage:
+                        NotchSystemUsageView()
                     }
                 }
                 .transition(
