@@ -16,8 +16,10 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
     case calendar
     case osd
     case battery
+    case bluetooth
     case shelf
     case mirror
+    case systemUsage
     case shortcuts
     case advanced
     case about
@@ -32,8 +34,10 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .calendar: "Calendar"
         case .osd: "OSD"
         case .battery: "Battery"
+        case .bluetooth: "Bluetooth"
         case .shelf: "Shelf"
         case .mirror: "Mirror"
+        case .systemUsage: "System Usage"
         case .shortcuts: "Shortcuts"
         case .advanced: "Advanced"
         case .about: "About"
@@ -48,8 +52,10 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .calendar: "calendar"
         case .osd: "dial.medium.fill"
         case .battery: "battery.100.bolt"
+        case .bluetooth: "dot.radiowaves.left.and.right"
         case .shelf: "books.vertical"
         case .mirror: "camera"
+        case .systemUsage: "cpu.fill"
         case .shortcuts: "keyboard"
         case .advanced: "gearshape.2"
         case .about: "info.circle"
@@ -94,10 +100,14 @@ struct SettingsView: View {
                     OSDSettings()
                 case .battery:
                     Charge()
+                case .bluetooth:
+                    Bluetooth()
                 case .shelf:
                     Shelf()
                 case .mirror:
                     MirrorSettings()
+                case .systemUsage:
+                    SystemUsageSettings()
                 case .shortcuts:
                     Shortcuts()
                 case .advanced:

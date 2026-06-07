@@ -22,6 +22,7 @@ struct ContentView: View {
     @ObservedObject var musicManager = MusicManager.shared
     @ObservedObject var lockScreenManager = LockScreenManager.shared
     @ObservedObject var batteryModel = BatteryStatusViewModel.shared
+    @ObservedObject var bluetoothModel = BluetoothStatusViewModel.shared
     @ObservedObject var brightnessManager = BrightnessManager.shared
     @ObservedObject var volumeManager = VolumeManager.shared
     @State private var hoverTask: Task<Void, Never>?
@@ -93,6 +94,10 @@ struct ContentView: View {
             chinWidth += max(0, displayClosedNotchHeight - 12) + liveActivityEdgeMargin + 4
         } else if coordinator.expandingView.type == .battery && coordinator.expandingView.show
             && vm.notchState == .closed && Defaults[.showPowerStatusNotifications]
+        {
+            chinWidth = 640
+        } else if coordinator.expandingView.type == .bluetooth && coordinator.expandingView.show
+            && vm.notchState == .closed && Defaults[.showBluetoothLiveActivities]
         {
             chinWidth = 640
         } else if (!coordinator.expandingView.show || coordinator.expandingView.type == .music)
@@ -334,7 +339,31 @@ struct ContentView: View {
                             .frame(width: 76, alignment: .trailing)
                         }
                         .frame(height: displayClosedNotchHeight, alignment: .center)
-                      } else if coordinator.shouldShowSneakPeek(on: vm.screenUUID) && Defaults[.inlineOSD] && (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && vm.notchState == .closed {
+                    } else if coordinator.expandingView.type == .bluetooth && coordinator.expandingView.show
+                        && vm.notchState == .closed && Defaults[.showBluetoothLiveActivities]
+                    {
+                        HStack(spacing: 0) {
+                            MarqueeText(
+                                bluetoothModel.statusText,
+                                font: .subheadline,
+                                color: .white,
+                                delayDuration: 1.0,
+                                frameWidth: vm.closedNotchSize.width
+                            )
+                            .frame(width: vm.closedNotchSize.width, alignment: .leading)
+
+                            Rectangle()
+                                .fill(.black)
+                                .frame(width: vm.closedNotchSize.width + 10)
+
+                            BoringBluetoothView(
+                                icon: bluetoothModel.lastIcon,
+                                eventType: bluetoothModel.lastEventType
+                            )
+                            .frame(width: 76, alignment: .center)
+                        }
+                        .frame(height: displayClosedNotchHeight, alignment: .center)
+                      } else if coordinator.shouldShowSneakPeek(on: vm.screenUUID) && Defaults[.inlineOSD] && (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .bluetooth) && vm.notchState == .closed {
                           InlineOSD(
                               type: coordinator.binding(for: vm.screenUUID).type,
                               value: coordinator.binding(for: vm.screenUUID).value,
@@ -362,7 +391,7 @@ struct ContentView: View {
                        }
 
                       if coordinator.shouldShowSneakPeek(on: vm.screenUUID) {
-                          if (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && !Defaults[.inlineOSD] && vm.notchState == .closed {
+                          if (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .bluetooth) && !Defaults[.inlineOSD] && vm.notchState == .closed {
                               SystemEventIndicatorModifier(
                                   eventType: coordinator.binding(for: vm.screenUUID).type,
                                   value: coordinator.binding(for: vm.screenUUID).value,
@@ -415,6 +444,8 @@ struct ContentView: View {
                         )
                     case .shelf:
                         ShelfView()
+                    case .systemUsage:
+                        NotchSystemUsageView()
                     }
                 }
                 .transition(

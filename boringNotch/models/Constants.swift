@@ -290,6 +290,9 @@ extension Defaults.Keys {
     static let showBatteryPercentage = Key<Bool>("showBatteryPercentage", default: true)
     static let showPowerStatusIcons = Key<Bool>("showPowerStatusIcons", default: true)
     
+    // MARK: Bluetooth
+    static let showBluetoothLiveActivities = Key<Bool>("showBluetoothLiveActivities", default: true)
+
     // MARK: Downloads
     static let enableDownloadListener = Key<Bool>("enableDownloadListener", default: true)
     static let enableSafariDownloads = Key<Bool>("enableSafariDownloads", default: true)
@@ -333,6 +336,10 @@ extension Defaults.Keys {
     static let mediaController = Key<MediaControllerType>("mediaController", default: defaultMediaController)
     static let enableLockScreenMediaWidget = Key<Bool>("enableLockScreenMediaWidget", default: true)
     
+    // MARK: System Usage
+    static let enableSystemUsage = Key<Bool>("enableSystemUsage", default: true)
+    static let systemUsageUpdateInterval = Key<Double>("systemUsageUpdateInterval", default: 2.0)
+
     // MARK: Advanced Settings
     static let useCustomAccentColor = Key<Bool>("useCustomAccentColor", default: false)
     static let customAccentColorData = Key<Data?>("customAccentColorData", default: nil)
