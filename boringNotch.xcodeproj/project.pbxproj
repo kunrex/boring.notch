@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3FE0002ABCD1234EF567890 /* LockScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */; };
-		C3FE0004ABCD1234EF567890 /* LockScreenMusicPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */; };
-		C3FE0006ABCD1234EF567890 /* LockScreenMusicPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */; };
 		0B01FEB22FD49EA5009C8D92 /* NotchSystemUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01FEB12FD49EA5009C8D92 /* NotchSystemUsageView.swift */; };
 		0BC7F5E32FD369990092DD55 /* BluetoothSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC7F5E22FD369990092DD55 /* BluetoothSettingsView.swift */; };
 		0BC7F5E52FD36CA70092DD55 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7F5E42FD36CA70092DD55 /* IOBluetooth.framework */; };
@@ -169,6 +166,9 @@
 		BB001004BB001004BB001004 /* BluetoothDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB001001BB001001BB001001 /* BluetoothDeviceManager.swift */; };
 		BB001005BB001005BB001005 /* BluetoothStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB001002BB001002BB001002 /* BluetoothStatusViewModel.swift */; };
 		BB001006BB001006BB001006 /* BoringBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB001003BB001003BB001003 /* BoringBluetooth.swift */; };
+		C3FE0002ABCD1234EF567890 /* LockScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */; };
+		C3FE0004ABCD1234EF567890 /* LockScreenMusicPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */; };
+		C3FE0006ABCD1234EF567890 /* LockScreenMusicPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */; };
 		F1F2A0A100000000000000F1 /* AudioCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2A0A200000000000000F2 /* AudioCaptureManager.swift */; };
 		F38DE6482D8243E7008B5C6D /* BatteryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */; };
 /* End PBXBuildFile section */
@@ -209,11 +209,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenManager.swift; sourceTree = "<group>"; };
-		C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenMusicPanel.swift; sourceTree = "<group>"; };
-		C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenMusicPanelManager.swift; sourceTree = "<group>"; };
 		0B01FEB12FD49EA5009C8D92 /* NotchSystemUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchSystemUsageView.swift; sourceTree = "<group>"; };
-		0BC7F5E22FD369990092DD55 /* BluetoothSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSettingsView.swift; sourceTree = "<group>"; };
 		0BC7F5E22FD369990092DD55 /* BluetoothSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSettingsView.swift; sourceTree = "<group>"; };
 		0BC7F5E42FD36CA70092DD55 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
 		0BE5072E2FCC1D840064CC3C /* NotificationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQueue.swift; sourceTree = "<group>"; };
@@ -360,10 +356,13 @@
 		B1D6FD422C6603730015F173 /* SoftwareUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareUpdater.swift; sourceTree = "<group>"; };
 		B1F0A0012E60000100000001 /* BrightnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessManager.swift; sourceTree = "<group>"; };
 		B1FEB4982C7686630066EBBC /* PanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGesture.swift; sourceTree = "<group>"; };
-		E48E522557A9475F9AEE537D /* SystemUsageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemUsageManager.swift; sourceTree = "<group>"; };
 		BB001001BB001001BB001001 /* BluetoothDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceManager.swift; sourceTree = "<group>"; };
 		BB001002BB001002BB001002 /* BluetoothStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStatusViewModel.swift; sourceTree = "<group>"; };
 		BB001003BB001003BB001003 /* BoringBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoringBluetooth.swift; sourceTree = "<group>"; };
+		C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenManager.swift; sourceTree = "<group>"; };
+		C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenMusicPanel.swift; sourceTree = "<group>"; };
+		C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenMusicPanelManager.swift; sourceTree = "<group>"; };
+		E48E522557A9475F9AEE537D /* SystemUsageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemUsageManager.swift; sourceTree = "<group>"; };
 		F1F2A0A200000000000000F2 /* AudioCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCaptureManager.swift; sourceTree = "<group>"; };
 		F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryActivityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -612,15 +611,6 @@
 				1443E7F22C609DCE0027C1FC /* matters.swift */,
 			);
 			path = sizing;
-			sourceTree = "<group>";
-		};
-		C3FE0013ABCD1234EF567890 /* LockScreen */ = {
-			isa = PBXGroup;
-			children = (
-				C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */,
-				C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */,
-			);
-			path = LockScreen;
 			sourceTree = "<group>";
 		};
 		1471639B2C5D362F0068B555 /* components */ = {
@@ -889,6 +879,15 @@
 				B186543B2C6F49AE000B926A /* ShortcutConstants.swift */,
 			);
 			path = Shortcuts;
+			sourceTree = "<group>";
+		};
+		C3FE0013ABCD1234EF567890 /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */,
+				C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */,
+			);
+			path = LockScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1200,11 +1199,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BoringNotchXPCHelper/BoringNotchXPCHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 272;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4BP3N64TP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoringNotchXPCHelper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BoringNotchXPCHelper;
@@ -1225,11 +1223,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BoringNotchXPCHelper/BoringNotchXPCHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 272;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4BP3N64TP7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BoringNotchXPCHelper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BoringNotchXPCHelper;
@@ -1380,13 +1377,12 @@
 				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
 				CODE_SIGN_ENTITLEMENTS = boringNotch/boringNotch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 272;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"boringNotch/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4BP3N64TP7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -1447,13 +1443,12 @@
 				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
 				CODE_SIGN_ENTITLEMENTS = boringNotch/boringNotch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 272;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"boringNotch/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4BP3N64TP7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
