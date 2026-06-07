@@ -32,6 +32,7 @@ struct GeneralSettings: View {
     @Default(.openNotchOnHover) var openNotchOnHover
     @Default(.enableOpeningAnimation) var enableOpeningAnimation
     @Default(.animationSpeedMultiplier) var animationSpeedMultiplier
+    @Default(.showOnLockScreen) var showOnLockScreen
 
     var body: some View {
         Form {
@@ -164,6 +165,8 @@ struct GeneralSettings: View {
 
             NotchBehaviour()
 
+            LockedNotchBehaviour()
+
             gestureControls()
         }
         .toolbar {
@@ -267,6 +270,17 @@ struct GeneralSettings: View {
             }
         } header: {
             Text("Notch behavior")
+        }
+    }
+
+    @ViewBuilder
+    func LockedNotchBehaviour() -> some View {
+        Section {
+            Defaults.Toggle(key: .showOnLockScreen) {
+                Text("Show notch on lock screen")
+            }
+        } header : {
+            Text("Lock Screen Behaviour")
         }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3FE0002ABCD1234EF567890 /* LockScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */; };
+		C3FE0004ABCD1234EF567890 /* LockScreenMusicPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */; };
+		C3FE0006ABCD1234EF567890 /* LockScreenMusicPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */; };
 		1100290C2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1100290B2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift */; };
 		110029272E84FD4C00035A57 /* TemporaryFileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110029262E84FD4C00035A57 /* TemporaryFileStorageService.swift */; };
 		1100292A2E8691B400035A57 /* FileShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110029292E8691B400035A57 /* FileShareView.swift */; };
@@ -196,6 +199,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenManager.swift; sourceTree = "<group>"; };
+		C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenMusicPanel.swift; sourceTree = "<group>"; };
+		C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenMusicPanelManager.swift; sourceTree = "<group>"; };
 		1100290B2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSItemProvider+LoadHelpers.swift"; sourceTree = "<group>"; };
 		110029262E84FD4C00035A57 /* TemporaryFileStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryFileStorageService.swift; sourceTree = "<group>"; };
 		110029292E8691B400035A57 /* FileShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileShareView.swift; sourceTree = "<group>"; };
@@ -582,9 +588,19 @@
 			path = sizing;
 			sourceTree = "<group>";
 		};
+		C3FE0013ABCD1234EF567890 /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C3FE0003ABCD1234EF567890 /* LockScreenMusicPanel.swift */,
+				C3FE0005ABCD1234EF567890 /* LockScreenMusicPanelManager.swift */,
+			);
+			path = LockScreen;
+			sourceTree = "<group>";
+		};
 		1471639B2C5D362F0068B555 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				C3FE0013ABCD1234EF567890 /* LockScreen */,
 				11985BDF2F37A3C800F81585 /* OSD */,
 				B141C23B2CA5F50900AC8CC8 /* Onboarding */,
 				14C08BB72C8DE49E000F8AA0 /* Calendar */,
@@ -606,6 +622,7 @@
 		147163B52C5D804B0068B555 /* managers */ = {
 			isa = PBXGroup;
 			children = (
+				C3FE0001ABCD1234EF567890 /* LockScreenManager.swift */,
 				11DB26652EDD0BE1001EA0CF /* LyricsService.swift */,
 				11D58EA12E760AE100FA8377 /* ImageService.swift */,
 				F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */,
@@ -1120,6 +1137,9 @@
 				1100290C2E847E2800035A57 /* NSItemProvider+LoadHelpers.swift in Sources */,
 				11CFC6632E09918400748C80 /* MusicControllerSelectionView.swift in Sources */,
 				B1F0A0022E60000100000001 /* BrightnessManager.swift in Sources */,
+				C3FE0002ABCD1234EF567890 /* LockScreenManager.swift in Sources */,
+				C3FE0004ABCD1234EF567890 /* LockScreenMusicPanel.swift in Sources */,
+				C3FE0006ABCD1234EF567890 /* LockScreenMusicPanelManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,8 +15,10 @@ struct Media: View {
     @Default(.hideNotchOption) var hideNotchOption
     @Default(.enableSneakPeek) private var enableSneakPeek
     @Default(.sneakPeekStyles) var sneakPeekStyles
-
     @Default(.enableLyrics) var enableLyrics
+
+    @Default(.enableLockScreenMediaWidget) var enableLockScreenMediaWidget
+    @Default(.lockSreenWidgetGlassStyle) var lockSreenWidgetGlassStyle
 
     var body: some View {
         Form {
@@ -106,6 +108,22 @@ struct Media: View {
                 Text("Media controls")
             }  footer: {
                 Text("Customize which controls appear in the music player. Volume expands when active.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Section {
+                Toggle("Lock screen media widget", isOn: $enableLockScreenMediaWidget)
+                if enableLockScreenMediaWidget {
+                    Picker("Widget style", selection: $lockSreenWidgetGlassStyle) {
+                        Text("Liquid Glass").tag(LockSreenWidgetGlassStyle.liquid)
+                        Text("Frosted").tag(LockSreenWidgetGlassStyle.frosted)
+                    }
+                    .pickerStyle(.segmented)
+                }
+            } header: {
+                Text("Lock Screen Widgets")
+            } footer: {
+                Text("Liquid Glass requires macOS 26 or later.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

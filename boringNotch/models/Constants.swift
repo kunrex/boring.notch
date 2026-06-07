@@ -204,6 +204,11 @@ enum OSDControlSource: String, CaseIterable, Identifiable, Defaults.Serializable
     }
 }
 
+enum LockSreenWidgetGlassStyle: String, Defaults.Serializable {
+    case frosted
+    case liquid
+}
+
 extension Defaults.Keys {
     // MARK: General
     static let appLanguage = Key<AppLanguage>("appLanguage", default: .system)
@@ -230,11 +235,13 @@ extension Defaults.Keys {
     static let nonNotchHeight = Key<CGFloat>("nonNotchHeight", default: 32)
     static let notchHeight = Key<CGFloat>("notchHeight", default: 32)
     //static let openLastTabByDefault = Key<Bool>("openLastTabByDefault", default: false)
-    static let showOnLockScreen = Key<Bool>("showOnLockScreen", default: false)
     static let hideFromScreenRecording = Key<Bool>("hideFromScreenRecording", default: false)
+
+    // MARK: Lock Screen General
+    static let showOnLockScreen = Key<Bool>("showOnLockScreen", default: false)
+    static let lockSreenWidgetGlassStyle = Key<LockSreenWidgetGlassStyle>("lockSreenWidgetGlassStyle", default: .liquid)
     
     // MARK: Appearance
-    //static let alwaysShowTabs = Key<Bool>("alwaysShowTabs", default: true)
     static let showMirror = Key<Bool>("showMirror", default: false)
     static let isMirrored = Key<Bool>("isMirrored", default: true)
     static let mirrorShape = Key<MirrorShapeEnum>("mirrorShape", default: MirrorShapeEnum.rectangle)
@@ -322,8 +329,9 @@ extension Defaults.Keys {
     // MARK: Fullscreen Media Detection
     static let hideNotchOption = Key<HideNotchOption>("hideNotchOption", default: .nowPlayingOnly)
     
-    // MARK: Media Controller
+    // MARK: Media Controller and Widgets
     static let mediaController = Key<MediaControllerType>("mediaController", default: defaultMediaController)
+    static let enableLockScreenMediaWidget = Key<Bool>("enableLockScreenMediaWidget", default: true)
     
     // MARK: Advanced Settings
     static let useCustomAccentColor = Key<Bool>("useCustomAccentColor", default: false)

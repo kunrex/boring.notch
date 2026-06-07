@@ -78,12 +78,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var closeNotchTask: Task<Void, Never>?
     private var previousScreens: [NSScreen]?
     private var onboardingWindowController: NSWindowController?
-    private var screenLockedObserver: Any?
-    private var screenUnlockedObserver: Any?
-    private var isScreenLocked: Bool = false
     private var windowScreenDidChangeObserver: Any?
     private var dragDetectors: [String: DragDetector] = [:] // UUID -> DragDetector
     private var observers: [Any] = []
+    private var lockScreenObserver: Int?
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return false
@@ -94,14 +92,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ShelfStateViewModel.shared.flushSync()
 
         NotificationCenter.default.removeObserver(self)
-        if let observer = screenLockedObserver {
-            DistributedNotificationCenter.default().removeObserver(observer)
-            screenLockedObserver = nil
+
+        if let id = self.lockScreenObserver {
+            LockScreenManager.shared.removeObserver(byId: id)
         }
-        if let observer = screenUnlockedObserver {
-            DistributedNotificationCenter.default().removeObserver(observer)
-            screenUnlockedObserver = nil
-        }
+
         MusicManager.shared.destroy()
         cleanupDragDetectors()
         cleanupWindows()
@@ -114,23 +109,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         observers.removeAll()
     }
 
-    @MainActor
-    func onScreenLocked(_ notification: Notification) {
-        isScreenLocked = true
-        if !Defaults[.showOnLockScreen] {
-            cleanupWindows()
+    @MainActor 
+    func onScreenLockStateChange(_ locked: Bool) {
+        if(locked) {
+            self.enableSkyLightOnAllWindows()
         } else {
-            enableSkyLightOnAllWindows()
-        }
-    }
-
-    @MainActor
-    func onScreenUnlocked(_ notification: Notification) {
-        isScreenLocked = false
-        if !Defaults[.showOnLockScreen] {
-            adjustWindowPosition(changeAlpha: true)
-        } else {
-            disableSkyLightOnAllWindows()
+            self.disableSkyLightOnAllWindows()
         }
     }
     
@@ -270,7 +254,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let window = BoringNotchSkyLightWindow(contentRect: rect, styleMask: styleMask, backing: .buffered, defer: false)
         
         // Enable SkyLight only when screen is locked
-        if isScreenLocked {
+        if LockScreenManager.shared.isLocked {
             window.enableSkyLight()
         } else {
             window.disableSkyLight()
@@ -366,22 +350,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         })
 
-        // Use closure-based observers for DistributedNotificationCenter and keep tokens for removal
-        screenLockedObserver = DistributedNotificationCenter.default().addObserver(
-            forName: NSNotification.Name(rawValue: "com.apple.screenIsLocked"),
-            object: nil, queue: .main) { [weak self] notification in
-                Task { @MainActor in
-                    self?.onScreenLocked(notification)
-                }
-        }
-
-        screenUnlockedObserver = DistributedNotificationCenter.default().addObserver(
-            forName: NSNotification.Name(rawValue: "com.apple.screenIsUnlocked"),
-            object: nil, queue: .main) { [weak self] notification in
-                Task { @MainActor in
-                    self?.onScreenUnlocked(notification)
-                }
-        }
+        self.lockScreenObserver = LockScreenManager.shared.addObserver(self.onScreenLockStateChange(_:))
 
         KeyboardShortcuts.onKeyDown(for: .toggleSneakPeek) { [weak self] in
             guard let self = self else { return }
