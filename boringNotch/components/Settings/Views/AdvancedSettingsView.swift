@@ -12,7 +12,6 @@ struct Advanced: View {
     @Default(.useCustomAccentColor) var useCustomAccentColor
     @Default(.customAccentColorData) var customAccentColorData
     @Default(.extendHoverArea) var extendHoverArea
-    @Default(.showOnLockScreen) var showOnLockScreen
     @Default(.hideFromScreenRecording) var hideFromScreenRecording
     
     @State private var customAccentColor: Color = .accentColor
@@ -173,9 +172,6 @@ struct Advanced: View {
                 }
                 Defaults.Toggle(key: .hideTitleBar) {
                     Text("Hide title bar")
-                }
-                Defaults.Toggle(key: .showOnLockScreen) {
-                    Text("Show notch on lock screen")
                 }
                 Defaults.Toggle(key: .hideFromScreenRecording) {
                     Text("Hide from screen recording")

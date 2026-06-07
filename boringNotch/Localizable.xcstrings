@@ -5619,6 +5619,9 @@
         }
       }
     },
+    "Frosted" : {
+
+    },
     "Full charge" : {
       "localizations" : {
         "cs" : {
@@ -6973,6 +6976,21 @@
           }
         }
       }
+    },
+    "Liquid Glass" : {
+
+    },
+    "Liquid Glass requires macOS 26 or later." : {
+
+    },
+    "Lock Screen Behaviour" : {
+
+    },
+    "Lock screen media widget" : {
+
+    },
+    "Lock Screen Widgets" : {
+
     },
     "Low" : {
       "localizations" : {
@@ -13821,6 +13839,9 @@
           }
         }
       }
+    },
+    "Widget style" : {
+
     },
     "Window Appearance" : {
       "localizations" : {

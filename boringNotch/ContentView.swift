@@ -20,6 +20,7 @@ struct ContentView: View {
 
     @ObservedObject var coordinator = BoringViewCoordinator.shared
     @ObservedObject var musicManager = MusicManager.shared
+    @ObservedObject var lockScreenManager = LockScreenManager.shared
     @ObservedObject var batteryModel = BatteryStatusViewModel.shared
     @ObservedObject var bluetoothModel = BluetoothStatusViewModel.shared
     @ObservedObject var brightnessManager = BrightnessManager.shared
@@ -89,7 +90,9 @@ struct ContentView: View {
     private var computedChinWidth: CGFloat {
         var chinWidth: CGFloat = vm.closedNotchSize.width
 
-        if coordinator.expandingView.type == .battery && coordinator.expandingView.show
+        if lockScreenManager.isLocked && !Defaults[.showOnLockScreen] && vm.notchState == .closed {
+            chinWidth += max(0, displayClosedNotchHeight - 12) + liveActivityEdgeMargin + 4
+        } else if coordinator.expandingView.type == .battery && coordinator.expandingView.show
             && vm.notchState == .closed && Defaults[.showPowerStatusNotifications]
         {
             chinWidth = 640
@@ -157,6 +160,7 @@ struct ContentView: View {
                         return view
                             .animation(vm.notchState == .open ? StandardAnimations.open : StandardAnimations.close, value: vm.notchState)
                             .animation(.smooth, value: gestureProgress)
+                            .animation(.smooth(duration: 0.45), value: lockScreenManager.isLocked)
                     }
                     .contentShape(Rectangle())
                     .onHover { hovering in
@@ -239,6 +243,7 @@ struct ContentView: View {
                     Rectangle()
                         .fill(Color.black.opacity(0.01))
                         .frame(width: computedChinWidth, height: vm.chinHeight)
+                        .animation(.smooth(duration: 0.45), value: lockScreenManager.isLocked)
                 }
             }
         }
@@ -299,7 +304,15 @@ struct ContentView: View {
                     .padding(.top, 40)
                     Spacer()
                 } else {
-                    if coordinator.expandingView.type == .battery && coordinator.expandingView.show
+                    if lockScreenManager.isLocked && !Defaults[.showOnLockScreen] && vm.notchState == .closed {
+                        LockIconActivity()
+                            .transition(
+                                .asymmetric(
+                                    insertion: .opacity.combined(with: .scale(scale: 0.85, anchor: .trailing)),
+                                    removal: .opacity.combined(with: .scale(scale: 0.85, anchor: .trailing))
+                                )
+                            )
+                    } else if coordinator.expandingView.type == .battery && coordinator.expandingView.show
                         && vm.notchState == .closed && Defaults[.showPowerStatusNotifications]
                     {
                         HStack(spacing: 0) {
@@ -449,6 +462,24 @@ struct ContentView: View {
     }
 
     @ViewBuilder
+    func LockIconActivity() -> some View {
+        HStack(spacing: 0) {
+            Rectangle()
+                .fill(.black)
+                .frame(width: vm.closedNotchSize.width - 4 + 2 * liveActivityEdgeMargin)
+            Image(systemName: "lock.fill")
+                .font(.system(size: 10, weight: .bold))
+                .foregroundStyle(.white.opacity(0.7))
+                .frame(
+                    width: max(0, displayClosedNotchHeight - 12),
+                    height: max(0, displayClosedNotchHeight - 12),
+                    alignment: .center
+                )
+        }
+        .frame(height: displayClosedNotchHeight, alignment: .center)
+    }
+
+    @ViewBuilder
     func BoringFaceAnimation() -> some View {
         HStack {
             Rectangle()
@@ -587,6 +618,7 @@ struct ContentView: View {
 
     @discardableResult
     private func doOpen() -> Bool {
+        guard !lockScreenManager.isLocked || Defaults[.showOnLockScreen] else { return false }
         var didOpen = false
         withAnimation(animationSpring) {
             didOpen = vm.open()
@@ -597,7 +629,7 @@ struct ContentView: View {
     // MARK: - Hover Management
 
     private func handleHover(_ hovering: Bool) {
-        if coordinator.firstLaunch { return }
+        guard !coordinator.firstLaunch, (!lockScreenManager.isLocked || Defaults[.showOnLockScreen]) else { return }
         hoverTask?.cancel()
         
         if hovering {
