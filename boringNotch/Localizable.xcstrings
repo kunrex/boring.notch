@@ -5179,6 +5179,9 @@
         }
       }
     },
+    "Enable System Usage" : {
+
+    },
     "Enable window shadow" : {
       "localizations" : {
         "de" : {
@@ -5615,6 +5618,9 @@
           }
         }
       }
+    },
+    "Frosted" : {
+
     },
     "Full charge" : {
       "localizations" : {
@@ -6610,6 +6616,9 @@
         }
       }
     },
+    "How often system stats are refreshed. Lower values are more responsive but take up more resources." : {
+
+    },
     "https://github.com/pear-devs/pear-desktop" : {
       "localizations" : {
         "en" : {
@@ -6967,6 +6976,21 @@
           }
         }
       }
+    },
+    "Liquid Glass" : {
+
+    },
+    "Liquid Glass requires macOS 26 or later." : {
+
+    },
+    "Lock Screen Behaviour" : {
+
+    },
+    "Lock screen media widget" : {
+
+    },
+    "Lock Screen Widgets" : {
+
     },
     "Low" : {
       "localizations" : {
@@ -8209,6 +8233,9 @@
           }
         }
       }
+    },
+    "Monitoring" : {
+
     },
     "Music Source" : {
       "localizations" : {
@@ -10724,6 +10751,9 @@
         }
       }
     },
+    "Sample Rate" : {
+
+    },
     "Scale corner radius for closed notch" : {
       "localizations" : {
         "en" : {
@@ -12843,6 +12873,12 @@
         }
       }
     },
+    "System Usage" : {
+
+    },
+    "System Usage Disabled" : {
+
+    },
     "Time to Full Charge: %@" : {
       "localizations" : {
         "en" : {
@@ -13803,6 +13839,9 @@
           }
         }
       }
+    },
+    "Widget style" : {
+
     },
     "Window Appearance" : {
       "localizations" : {
