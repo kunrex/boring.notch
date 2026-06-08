@@ -347,7 +347,7 @@ struct ContentView: View {
                                 icon: bluetoothModel.lastIcon,
                                 eventType: bluetoothModel.lastEventType
                             )
-                            .frame(width: 76, alignment: .center)
+                            .frame(width: 76, alignment: .trailing)
                         }
                         .frame(height: displayClosedNotchHeight, alignment: .center)
                       } else if coordinator.shouldShowSneakPeek(on: vm.screenUUID) && Defaults[.inlineOSD] && (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .bluetooth) && vm.notchState == .closed {
