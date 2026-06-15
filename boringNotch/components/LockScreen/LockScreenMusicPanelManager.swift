@@ -27,12 +27,16 @@ class LockScreenMusicPanelManager {
     private var musicObserver: AnyCancellable?
 
     private init() {
-        // Auto-hide if music stops while locked
+        // Auto-hide or show if music activity changes when locked
         musicObserver = MusicManager.shared.$isPlayerIdle
             .receive(on: RunLoop.main)
             .sink { [weak self] idle in
                 guard let self, LockScreenManager.shared.isLocked else { return }
-                if idle { self.hidePanel() }
+                if idle { 
+                    self.hidePanel() 
+                } else {
+                    self.showPanel()
+                } 
             }
     }
 

@@ -75,6 +75,10 @@ struct LockScreenMusicPanel: View {
                         isPlaying: musicManager.isPlaying
                     ) { newValue in
                         musicManager.seek(to: newValue)
+                    }.onAppear {
+                        withAnimation(.easeOut(duration: 0.3)) {
+                            sliderValue = musicManager.elapsedTime + ctx.date.timeIntervalSince(musicManager.timestampDate) * musicManager.playbackRate 
+                        }
                     }
                 }
 
